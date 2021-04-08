@@ -10,4 +10,4 @@ Desenvolvido com componentes do Primeng.
 Versão do Angular 7.
 
 
-Sistema em andamento, constante evolução e melhorias
+Sistema em andamento, constante evoluções e melhorias
