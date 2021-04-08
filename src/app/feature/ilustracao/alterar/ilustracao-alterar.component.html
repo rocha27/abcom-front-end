@@ -1,0 +1,474 @@
+<div class="container">
+    <div class="ui-md-10 ui-md-offset-1 ui-md-nopad">
+        <p-card>
+            <!--            <h3>{{'ENTIDADE.SCREEN.MANTER.TITLE_UPDATE' | translate }}</h3>-->
+            <h3>Alterar Referencial</h3>
+            <p-tabView class="innerTabView">
+                <!--                <p-tabPanel header="{{'ENTIDADE.SCREEN.HEADER.STEP_ONE' | translate }}">-->
+                <form #form="ngForm" (ngSubmit)="save(form)">
+                    <!--                        <h3>{{'ENTIDADE.SCREEN.MANTER.TITLE1' | translate }}</h3>-->
+                    <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+                        <div class="ui-grid-row mt-2">
+                            <div class="ui-grid-col-12">
+                                        <span class="ui-float-label">
+                                            <input
+                                                pInputText type="text"
+                                                name="entidade_nome"
+                                                required
+                                                [(ngModel)]="registro.nome"
+                                                maxlength="256"/>
+                                            <label class="required" >
+<!--                                                {{'ENTIDADE.SCREEN.MANTER.LABEL.NAME' | translate }}-->
+                                                Referencial
+                                            </label>
+                                        </span>
+                            </div>
+                            <!--                                <div class="ui-grid-col-6">-->
+                            <!--                                        <span class="ui-float-label">-->
+                            <!--                                            <input-->
+                            <!--                                                pInputText type="text"-->
+                            <!--                                                name="entidade_sigla"-->
+                            <!--                                                required-->
+                            <!--                                                [(ngModel)]="registro.sigla"-->
+                            <!--                                                maxlength="100"/>-->
+                            <!--                                            <label class="required">-->
+                            <!--                                                {{'ENTIDADE.SCREEN.MANTER.LABEL.SIGLA' | translate }}-->
+                            <!--                                            </label>-->
+                            <!--                                        </span>-->
+                            <!--                                </div>-->
+                        </div>
+                        <!--                            <div class="ui-grid-row mt-2">-->
+                        <!--                                <div class="ui-grid-col-6">-->
+                        <!--                                        <span class="ui-float-label">-->
+                        <!--                                            <input-->
+                        <!--                                                pInputText type="text"-->
+                        <!--                                                name="entidade_titular"-->
+                        <!--                                                required-->
+                        <!--                                                [(ngModel)]="registro.titular"-->
+                        <!--                                                maxlength="100"/>-->
+                        <!--                                            <label class="required">-->
+                        <!--                                                {{'ENTIDADE.SCREEN.MANTER.LABEL.TITULAR' | translate }}-->
+                        <!--                                            </label>-->
+                        <!--                                        </span>-->
+                        <!--                                </div>-->
+                        <!--                                <div class="ui-grid-col-6">-->
+                        <!--                                        <span class="ui-float-label">-->
+                        <!--                                            <p-dropdown-->
+                        <!--                                                required-->
+                        <!--                                                [disabled]="true"-->
+                        <!--                                                name="entidade_cargo"-->
+                        <!--                                                placeholder="{{'ENTIDADE.SCREEN.MANTER.LABEL.OFFICE' | translate}}">-->
+                        <!--                                                <ng-template let-item pTemplate="item">-->
+                        <!--                                                    <div class="ui-helper-clearfix">-->
+                        <!--                                                        <span>{{item.label}}</span>-->
+                        <!--                                                    </div>-->
+                        <!--                                                </ng-template>-->
+                        <!--                                            </p-dropdown>-->
+                        <!--                                        </span>-->
+                        <!--                                </div>-->
+                        <!--                            </div>-->
+                    </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-12 mt-3" style="text-align: end">
+                            <button pButton class="button-acao" type="submit" icon="pi pi-check"
+                                    label="{{'COMUM.BUTTON.SAVE' | translate}}"></button>
+                            <button pButton class="button-acao" type="button" icon="pi pi-trash"
+                                    label="{{'COMUM.BUTTON.CLEAR' | translate}}" (click)="clean()"></button>
+                            <button pButton class="button-acao" type="button" icon="pi pi-arrow-left"
+                                    label="{{'COMUM.BUTTON.COME_BACK' | translate}}" (click)="goBack()"></button>
+                        </div>
+                    </div>
+                </form>
+                <!--                </p-tabPanel>-->
+                <!--                <p-tabPanel header="{{'ENTIDADE.SCREEN.HEADER.STEP_TWO' | translate }}">-->
+                <!--                    <form #formTwo="ngForm" (ngSubmit)="validAddress(formTwo)">-->
+                <!--                        <h3 *ngIf="!showAddress">{{'ENTIDADE.SCREEN.MANTER.TITLE2' | translate }}</h3>-->
+                <!--                        <h3 *ngIf="showAddress">{{'ENTIDADE.SCREEN.MANTER.TITLE4' | translate }}</h3>-->
+                <!--                        <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">-->
+                <!--                            <div class="ui-grid-row mt-2">-->
+                <!--                                <div class="ui-grid-col-4">-->
+                <!--                                        <span class="ui-float-label">-->
+
+                <!--                                            <p-inputMask [(ngModel)]="address.cep"-->
+                <!--                                                         required-->
+                <!--                                                         name="address_cep"-->
+                <!--                                                         [disabled]="showAddress"-->
+                <!--                                                         (onBlur)="getAdress()"-->
+                <!--                                                         maxlength="9"-->
+                <!--                                                         mask="99999-999"></p-inputMask>-->
+                <!--                                            <label class="required" >-->
+                <!--                                                {{'ENTIDADE.SCREEN.MANTER.LABEL.CEP' | translate }}-->
+                <!--                                            </label>-->
+                <!--                                        </span>-->
+                <!--                                </div>-->
+                <!--                                <div class="ui-grid-col-4">-->
+                <!--                                        <span class="ui-float-label">-->
+                <!--                                            <input-->
+                <!--                                                pInputText type="text"-->
+                <!--                                                name="address_uf"-->
+                <!--                                                required-->
+                <!--                                                [(ngModel)]="address.uf"-->
+                <!--                                                [disabled]="showAddress"-->
+                <!--                                                maxlength="2"/>-->
+                <!--                                            <label class="required">-->
+                <!--                                                {{'ENTIDADE.SCREEN.MANTER.LABEL.UF' | translate }}-->
+                <!--                                            </label>-->
+                <!--                                        </span>-->
+                <!--                                </div>-->
+                <!--                                <div class="ui-grid-col-4">-->
+                <!--                                        <span class="ui-float-label">-->
+                <!--                                            <input-->
+                <!--                                                pInputText type="text"-->
+                <!--                                                name="address_municipio"-->
+                <!--                                                required-->
+                <!--                                                [(ngModel)]="address.municipio"-->
+                <!--                                                [disabled]="showAddress"-->
+                <!--                                                maxlength="100"/>-->
+                <!--                                            <label class="required">-->
+                <!--                                                {{'ENTIDADE.SCREEN.MANTER.LABEL.MUNICIPIO' | translate }}-->
+                <!--                                            </label>-->
+                <!--                                        </span>-->
+                <!--                                </div>-->
+                <!--                            </div>-->
+                <!--                            <div class="ui-grid-row mt-2">-->
+                <!--                                <div class="ui-grid-col-4">-->
+                <!--                                        <span class="ui-float-label">-->
+                <!--                                            <input-->
+                <!--                                                pInputText type="text"-->
+                <!--                                                name="address_logradouro"-->
+                <!--                                                required-->
+                <!--                                                [(ngModel)]="address.logradouro"-->
+                <!--                                                [disabled]="showAddress"-->
+                <!--                                                maxlength="100"/>-->
+                <!--                                            <label class="required">-->
+                <!--                                                {{'ENTIDADE.SCREEN.MANTER.LABEL.LOGRADOURO' | translate }}-->
+                <!--                                            </label>-->
+                <!--                                        </span>-->
+                <!--                                </div>-->
+                <!--                                <div class="ui-grid-col-4">-->
+                <!--                                        <span class="ui-float-label">-->
+                <!--                                            <input-->
+                <!--                                                pInputText type="text"-->
+                <!--                                                name="address_bairro"-->
+                <!--                                                required-->
+                <!--                                                [(ngModel)]="address.bairro"-->
+                <!--                                                [disabled]="showAddress"-->
+                <!--                                                maxlength="100"/>-->
+                <!--                                            <label class="required">-->
+                <!--                                                {{'ENTIDADE.SCREEN.MANTER.LABEL.BAIRRO' | translate }}-->
+                <!--                                            </label>-->
+                <!--                                        </span>-->
+                <!--                                </div>-->
+                <!--                                <div class="ui-grid-col-4">-->
+                <!--                                        <span class="ui-float-label">-->
+                <!--                                            <input-->
+                <!--                                                pInputText type="text"-->
+                <!--                                                name="address_numero"-->
+                <!--                                                [disabled]="showAddress"-->
+                <!--                                                [(ngModel)]="address.numero"-->
+                <!--                                                maxlength="5"/>-->
+                <!--                                            <label>-->
+                <!--                                                {{'ENTIDADE.SCREEN.MANTER.LABEL.NUMERO' | translate }}-->
+                <!--                                            </label>-->
+                <!--                                        </span>-->
+                <!--                                </div>-->
+                <!--                            </div>-->
+                <!--                            <div class="ui-grid-row mt-2">-->
+                <!--                                <div class="ui-grid-col-8">-->
+                <!--                                        <span class="ui-float-label">-->
+                <!--                                            <input-->
+                <!--                                                pInputText type="text"-->
+                <!--                                                name="address_complemento"-->
+                <!--                                                [disabled]="showAddress"-->
+                <!--                                                [(ngModel)]="address.complemento"-->
+                <!--                                                maxlength="200"/>-->
+                <!--                                            <label>-->
+                <!--                                                {{'ENTIDADE.SCREEN.MANTER.LABEL.COMPLEMENTO' | translate }}-->
+                <!--                                            </label>-->
+                <!--                                        </span>-->
+                <!--                                </div>-->
+                <!--                                <div class="ui-grid-col-4"></div>-->
+                <!--                            </div>-->
+                <!--                        </div>-->
+                <!--                        <br>-->
+                <!--                        <div class="ui-grid-row">-->
+                <!--                            <div class="ui-grid-col-12 mt-3" style="text-align: end">-->
+                <!--                                <button pButton class="button-acao" type="submit" icon="pi pi-check"-->
+                <!--                                        *ngIf="!showAddress"-->
+                <!--                                        label="{{'COMUM.BUTTON.SAVE' | translate}}"></button>-->
+                <!--                                <button pButton class="button-acao" type="button" icon="pi pi-trash"-->
+                <!--                                        *ngIf="!showAddress"-->
+                <!--                                        label="{{'COMUM.BUTTON.CLEAR' | translate}}" (click)="cleanAddress()">-->
+                <!--                                </button>-->
+                <!--                                <button pButton class="button-acao" type="button" icon="pi pi-trash"-->
+                <!--                                        *ngIf="showAddress"-->
+                <!--                                        label="{{'COMUM.BUTTON.CLOSE' | translate}}" (click)="closedViewAddress()">-->
+                <!--                                </button>-->
+                <!--                            </div>-->
+                <!--                        </div>-->
+                <!--                    </form>-->
+                <!--                    <br>-->
+                <!--                    <p-card>-->
+                <!--                        <div>-->
+                <!--                            <div class="ui-grid-row">-->
+                <!--                                <div class="ui-grid-col-12">-->
+                <!--                                    <h3>Lista de Endereço(s)</h3>-->
+                <!--                                </div>-->
+                <!--                            </div>-->
+
+                <!--                            <div>-->
+                <!--                                <p-table [value]="listAddress"  [paginator]="true" [rows]="10">-->
+                <!--                                    <ng-template pTemplate="header">-->
+                <!--                                        <tr>-->
+                <!--                                            <th>CEP</th>-->
+                <!--                                            <th>UF</th>-->
+                <!--                                            <th>Município</th>-->
+                <!--                                            <th>Bairro</th>-->
+                <!--                                            <th>Ações</th>-->
+                <!--                                        </tr>-->
+                <!--                                    </ng-template>-->
+                <!--                                    <ng-template pTemplate="body" let-address let-rowIndex="rowIndex">-->
+                <!--                                        <tr style="text-align: center">-->
+                <!--                                            <td>{{address.cep}}</td>-->
+                <!--                                            <td>{{address.uf}}</td>-->
+                <!--                                            <td>{{address.municipio}}</td>-->
+                <!--                                            <td>{{address.bairro}}</td>-->
+                <!--                                            <td>-->
+                <!--                                                <button type="button" pButton icon="pi pi-search"-->
+                <!--                                                        style="margin-right: 10px;"-->
+                <!--                                                        [disabled]="showAddress"-->
+                <!--                                                        (click)="viewAddress(address, true)"-->
+                <!--                                                        title="{{'REPRESENTANTE.SCREEN.MANTER.LABEL.VIZUALIZAR' |-->
+                <!--                                                                        translate }}">-->
+                <!--                                                </button>-->
+                <!--                                                <button type="button" pButton icon="pi pi-pencil"-->
+                <!--                                                        style="margin-right: 10px;"-->
+                <!--                                                        [disabled]="showAddress"-->
+                <!--                                                        (click)="editAddress(address, rowIndex)"-->
+                <!--                                                        title="{{'REPRESENTANTE.SCREEN.MANTER.LABEL.EDITAR' |-->
+                <!--                                                                        translate }}">-->
+                <!--                                                </button>-->
+                <!--                                                <button type="button" pButton icon="pi pi-times"-->
+                <!--                                                        [disabled]="showAddress || showEditAddress"-->
+                <!--                                                        (click)="deleteAddress(rowIndex)"-->
+                <!--                                                        title="{{'REPRESENTANTE.SCREEN.MANTER.LABEL.EXCLUIR' |-->
+                <!--                                                                        translate }}">-->
+                <!--                                                </button>-->
+                <!--                                            </td>-->
+                <!--                                        </tr>-->
+                <!--                                    </ng-template>-->
+                <!--                                </p-table>-->
+                <!--                            </div>-->
+                <!--                        </div>-->
+                <!--                    </p-card>-->
+                <!--                </p-tabPanel>-->
+                <!--                <p-tabPanel header="{{'ENTIDADE.SCREEN.HEADER.STEP_THREE' | translate }}">-->
+                <!--                    <form #formThree="ngForm" (ngSubmit)="validContact(formThree)">-->
+                <!--                        <h3>{{'ENTIDADE.SCREEN.MANTER.TITLE3' | translate }}</h3>-->
+                <!--                        <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">-->
+                <!--                            <div class="ui-grid-row mt-2">-->
+                <!--                                <div class="ui-grid-col-4">-->
+                <!--                                                <span class="ui-float-label">-->
+                <!--                                                    <p-dropdown [options]="ListCountry"-->
+                <!--                                                                required-->
+                <!--                                                                name="contact_pais"-->
+                <!--                                                                placeholder=" &nbsp;"-->
+                <!--                                                                [(ngModel)]="contact.pais"-->
+                <!--                                                                optionLabel="nomePais" [showClear]="true"></p-dropdown>-->
+                <!--                                                    <label class="required" >{{'ENTIDADE.SCREEN.MANTER.LABEL.PAIS' |-->
+                <!--                                                        translate }}-->
+                <!--                                                    </label>-->
+                <!--                                                </span>-->
+                <!--                                </div>-->
+                <!--                                <div class="ui-grid-col-4">-->
+                <!--                                                <span class="ui-float-label">-->
+                <!--                                                    <input-->
+                <!--                                                        pInputText-->
+                <!--                                                        required-->
+                <!--                                                        type="text" maxlength="20" onkeypress="if-->
+                <!--                                                        (!isNaN(String.fromCharCode(window.event.keyCode)))-->
+                <!--                                                        return true; else return false;"-->
+                <!--                                                        [(ngModel)]="contact.telefone"-->
+                <!--                                                        name="contact_telefone"-->
+                <!--                                                        />-->
+                <!--                                                    <label class="required">{{'ENTIDADE.SCREEN.MANTER.LABEL.TELEFONE' |-->
+                <!--                                                        translate }}-->
+                <!--                                                    </label>-->
+                <!--                                                </span>-->
+                <!--                                </div>-->
+                <!--                                <div class="ui-grid-col-4">-->
+                <!--                                                <span class="ui-float-label">-->
+                <!--                                                    <input-->
+                <!--                                                        pInputText-->
+                <!--                                                        type="text" maxlength="10" onkeypress="if-->
+                <!--                                                        (!isNaN(String.fromCharCode(window.event.keyCode)))-->
+                <!--                                                        return true; else return false;"-->
+                <!--                                                        name="contact_ramal"-->
+                <!--                                                        [(ngModel)]="contact.ramal"/>-->
+                <!--                                                    <label>{{'ENTIDADE.SCREEN.MANTER.LABEL.RAMAL' |-->
+                <!--                                                        translate }}-->
+                <!--                                                    </label>-->
+                <!--                                                </span>-->
+                <!--                                </div>-->
+                <!--                            </div>-->
+                <!--                            <div class="ui-grid-row mt-2">-->
+                <!--                                <div class="ui-grid-col-6">-->
+                <!--                                                <span class="ui-float-label">-->
+                <!--                                                    <input-->
+                <!--                                                        pInputText type="email"-->
+                <!--                                                        name="contact_email"-->
+                <!--                                                        required-->
+                <!--                                                        [(ngModel)]="contact.email"-->
+                <!--                                                        maxlength="100"/>-->
+                <!--                                                    <label class="required">{{'ENTIDADE.SCREEN.MANTER.LABEL.EMAIL' |-->
+                <!--                                                        translate }}-->
+                <!--                                                    </label>-->
+                <!--                                                </span>-->
+                <!--                                </div>-->
+                <!--                                <div class="ui-grid-col-6">-->
+                <!--                                                <span class="ui-float-label">-->
+                <!--                                                    <input-->
+                <!--                                                        pInputText type="url"-->
+                <!--                                                        name="contact_pagina"-->
+                <!--                                                        [(ngModel)]="contact.pagina"-->
+                <!--                                                        maxlength="100"/>-->
+                <!--                                                    <label>{{'ENTIDADE.SCREEN.MANTER.LABEL.PAGINA' |-->
+                <!--                                                        translate }}-->
+                <!--                                                    </label>-->
+                <!--                                                </span>-->
+                <!--                                </div>-->
+                <!--                            </div>-->
+                <!--                        </div>-->
+                <!--                        <br>-->
+                <!--                        <div class="ui-grid-row">-->
+                <!--                            <div class="ui-grid-col-12 mt-3" style="text-align: end">-->
+                <!--                                <button pButton class="button-acao" type="submit" icon="pi pi-check"-->
+                <!--                                        label="{{'COMUM.BUTTON.SAVE' | translate}}"></button>-->
+                <!--                                <button pButton class="button-acao" type="button" icon="pi pi-trash"-->
+                <!--                                        label="{{'COMUM.BUTTON.CLEAR' | translate}}" (click)="cleanContact()">-->
+                <!--                                </button>-->
+                <!--                            </div>-->
+                <!--                        </div>-->
+                <!--                    </form>-->
+                <!--                    <br>-->
+                <!--                    <p-card>-->
+                <!--                        <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">-->
+                <!--                            <div class="ui-grid-row">-->
+                <!--                                <div class="ui-grid-col-12">-->
+                <!--                                    <h3>Lista de Contatos/Emails</h3>-->
+                <!--                                </div>-->
+                <!--                            </div>-->
+
+                <!--                            <div>-->
+                <!--                                <p-table [value]="listContact"  [paginator]="true" [rows]="10">-->
+                <!--                                    <ng-template pTemplate="header">-->
+                <!--                                        <tr>-->
+                <!--                                            <th>País</th>-->
+                <!--                                            <th>Telefone</th>-->
+                <!--                                            <th>Ramal</th>-->
+                <!--                                            <th>Email</th>-->
+                <!--                                            <th>Página na internet </th>-->
+                <!--                                            <th>Ações</th>-->
+                <!--                                        </tr>-->
+                <!--                                    </ng-template>-->
+                <!--                                    <ng-template pTemplate="body" let-contact let-rowIndex="rowIndex">-->
+                <!--                                        <tr style="text-align: center">-->
+                <!--                                            <td>{{contact.pais.nomePais}}</td>-->
+                <!--                                            <td>{{contact.telefone}}</td>-->
+                <!--                                            <td>{{contact.ramal}}</td>-->
+                <!--                                            <td>{{contact.email}}</td>-->
+                <!--                                            <td>{{contact.pagina}}</td>-->
+                <!--                                            <td>-->
+                <!--                                                <button type="button" pButton icon="pi pi-pencil"-->
+                <!--                                                        style="margin-right: 10px;"-->
+                <!--                                                        (click)="editContact(contact, rowIndex)"-->
+                <!--                                                        title="{{'REPRESENTANTE.SCREEN.MANTER.LABEL.EDITAR' |-->
+                <!--                                                                        translate }}">-->
+                <!--                                                </button>-->
+                <!--                                                <button type="button" pButton icon="pi pi-times"-->
+                <!--                                                        [disabled]="showEditContact"-->
+                <!--                                                        (click)="deleteContact(rowIndex)"-->
+                <!--                                                        title="{{'REPRESENTANTE.SCREEN.MANTER.LABEL.EXCLUIR' |-->
+                <!--                                                                        translate }}">-->
+                <!--                                                </button>-->
+                <!--                                            </td>-->
+                <!--                                        </tr>-->
+                <!--                                    </ng-template>-->
+                <!--                                </p-table>-->
+                <!--                            </div>-->
+                <!--                        </div>-->
+                <!--                    </p-card>-->
+                <!--                </p-tabPanel>-->
+                <!--                <p-tabPanel header="{{'ENTIDADE.SCREEN.HEADER.STEP_FOUR' | translate }}">-->
+                <!--                    <form>-->
+                <!--                        <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">-->
+                <!--                            <h3>{{'ENTIDADE.SCREEN.MANTER.LABEL.TEXTH1' | translate }}</h3>-->
+                <!--                            <div class="ui-grid-row mt-2">-->
+                <!--                                <div class="ui-grid-col-6">-->
+                <!--                                    <p-autoComplete-->
+                <!--                                        name="supervisor_nome"-->
+                <!--                                        required-->
+                <!--                                        field="nome"-->
+                <!--                                        [(ngModel)]="representative"-->
+                <!--                                        [suggestions]="representative"-->
+                <!--                                        (completeMethod)="buscaRepresentante($event)"-->
+                <!--                                        [minLength]="3"-->
+                <!--                                        placeholder="{{'ENTIDADE.SCREEN.MANTER.LABEL.DESCRIPTION' | translate }}"-->
+                <!--                                        maxlength="250">-->
+                <!--                                        <ng-template let-item pTemplate="item">-->
+                <!--                                            <span>{{ item.nome + ', ' + item.cpf + ', ' + item.email}}</span>-->
+                <!--                                        </ng-template>-->
+                <!--                                    </p-autoComplete>-->
+                <!--                                </div>-->
+                <!--                                <div class="ui-grid-col-2">-->
+                <!--                                    <button pButton class="button-acao" icon="pi pi-check"-->
+                <!--                                            (click)="vincularRepresentative(representative)"-->
+                <!--                                            label="{{'COMUM.BUTTON.ADD' | translate}}"></button>-->
+                <!--                                </div>-->
+                <!--                                <div class="ui-grid-col-4"></div>-->
+                <!--                            </div>-->
+                <!--                        </div>-->
+                <!--                    </form>-->
+                <!--                    <br>-->
+                <!--                    <p-card>-->
+                <!--                        <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">-->
+                <!--                            <div class="ui-grid-row">-->
+                <!--                                <div class="ui-grid-col-12">-->
+                <!--                                    <h3>Representantes(s)</h3>-->
+                <!--                                </div>-->
+                <!--                            </div>-->
+
+                <!--                            <div>-->
+                <!--                                <p-table [value]="listRepresentative"  [paginator]="true" [rows]="10">-->
+                <!--                                    <ng-template pTemplate="header">-->
+                <!--                                        <tr>-->
+                <!--                                            <th>Nome</th>-->
+                <!--                                            <th>CPF</th>-->
+                <!--                                            <th>Email</th>-->
+                <!--                                            <th>Ações</th>-->
+                <!--                                        </tr>-->
+                <!--                                    </ng-template>-->
+                <!--                                    <ng-template pTemplate="body" let-representative let-rowIndex="rowIndex">-->
+                <!--                                        <tr style="text-align: center">-->
+                <!--                                            <td>{{representative.nome}}</td>-->
+                <!--                                            <td>{{representative.cpf}}</td>-->
+                <!--                                            <td>{{representative.email}}</td>-->
+                <!--                                            <td>-->
+                <!--                                                <button type="button" pButton icon="pi pi-times"-->
+                <!--                                                        (click)="deleteVinculo(rowIndex, representative)"-->
+                <!--                                                        title="{{'REPRESENTANTE.SCREEN.MANTER.LABEL.EXCLUIR' |-->
+                <!--                                                                        translate }}">-->
+                <!--                                                </button>-->
+                <!--                                            </td>-->
+                <!--                                        </tr>-->
+                <!--                                    </ng-template>-->
+                <!--                                </p-table>-->
+                <!--                            </div>-->
+                <!--                        </div>-->
+                <!--                    </p-card>-->
+
+                <!--                </p-tabPanel>-->
+            </p-tabView>
+        </p-card>
+    </div>
+</div>

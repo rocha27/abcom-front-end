@@ -1,0 +1,34 @@
+<div class="container">
+        <p-card>
+            <h3>Visualizar Produto</h3>
+                <form>
+                    <div class="ui-g">
+                        <div class="ui-g-12 ui-lg-8 ui-lg-offset-2 ui-g-nopad">
+                            <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+                                <div class="ui-grid-row mt-2">
+                                    <div class="ui-grid-col-12">
+                                        <span class="ui-float-label">
+                                            <input
+                                                pInputText type="text"
+                                                name="product_nome"
+                                                disabled
+                                                required
+                                                maxlength="256"
+                                                [(ngModel)]="product.nome"/>
+                                            <label class="required">{{'PRODUTO.SCREEN.CADASTRAR.LABEL.NAME' | translate}}</label>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ui-grid-row">
+                                <div class="ui-grid-col-12 mt-3" style="text-align: end">
+                                    <button pButton class="button-acao" type="button" icon="pi pi-arrow-left"
+                                            label="{{'COMUM.BUTTON.COME_BACK' | translate}}" [routerLink]="['/produto']"></button>
+                                </div>
+                            </div>
+                            <div class="ui-grid-row mt-3"></div>
+                        </div>
+                    </div>
+                </form>
+        </p-card>
+</div>

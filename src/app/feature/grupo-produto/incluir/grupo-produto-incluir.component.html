@@ -1,0 +1,65 @@
+ <div class="container">
+        <p-card>
+            <h3>Cadastrar Grupo de Produto</h3>
+                <form #form="ngForm" (ngSubmit)="salvar(form)">
+                    <div class="ui-g">
+                        <div class="ui-g-12 ui-lg-8 ui-lg-offset-2 ui-g-nopad">
+                            <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+                                <div class="ui-grid-row mt-2">
+                                    <div class="ui-grid-col-12">
+                                        <span class="ui-float-label">
+                                            <input
+                                                pInputText type="text"
+                                                name="grupo_produtos_nome"
+                                                required
+                                                [(ngModel)]="grupoProduto.nome"
+                                                maxlength="256"/>
+                                        <label class="required">Nome Grupo de Produtos</label>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="ui-grid-row mt-2">
+                                    <div class="ui-grid-col-12">
+
+                                        <p-pickList [source]="listaProduto" [target]="grupoProduto.listaProdutoSelecionado" sourceHeader="Pesquisa"
+                                                    [dragdrop]="true" [responsive]="true"  sourceFilterPlaceholder="Search by name"
+                                                    targetFilterPlaceholder="Search by name">
+                                            <ng-template let-listaProduto pTemplate="item">
+                                                <div>
+                                                    <div>
+                                                        <h4 class="p-mb-2">{{listaProduto.nome.toUpperCase()}}</h4>
+
+                                                    </div>
+                                                </div>
+                                            </ng-template>
+                                        </p-pickList>
+                                    </div>
+                                </div>
+                                <div class="ui-grid-row mt-3">
+                                    <div class="ui-grid-col-12">
+                                        <span class="ui-float-label">
+                                           <textarea
+                                               pInputTextarea
+                                               name="informacoes"
+                                               [(ngModel)]="grupoProduto.descricaoGrupoProduto"
+                                               maxlength="256"
+                                           ></textarea>
+                                        <label>Informações Adicionais</label>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ui-grid-row">
+                                <div class="ui-grid-col-12 mt-3" style="text-align: end">
+                                    <button pButton class="button-acao" type="submit" icon="pi pi-check"
+                                            label="{{'COMUM.BUTTON.SAVE' | translate}}"></button>
+                                    <button pButton class="button-acao" type="button" icon="pi pi-arrow-left"
+                                            label="{{'COMUM.BUTTON.COME_BACK' | translate}}" [routerLink]="['/grupo-produto']"></button>
+                                </div>
+                            </div>
+                            <div class="ui-grid-row mt-3"></div>
+                        </div>
+                    </div>
+                </form>
+        </p-card>
+    </div>

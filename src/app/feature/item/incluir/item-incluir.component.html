@@ -1,0 +1,309 @@
+<div class="container">
+    <div class="ui-md-10 ui-md-offset-1 ui-md-nopad">
+        <p-card>
+            <h3>Cadastrar Item</h3>
+            <p-tabView>
+                <form #form="ngForm" (ngSubmit)="salvar(form)"></form>
+                <h3>O item estará sendo vinculado ao seguinte documento:</h3>
+                <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+                    <div class="ui-grid-row mt-2">
+                        <div class="ui-grid-col-6">
+                            <span class="ui-float-label">
+                                <p-dropdown
+                                    optionLabel="nome"
+                                    required [filter]="true"
+                                    placeholder="Referencial"
+                                    name="referencial">
+                                </p-dropdown>
+<!--                                   <label *ngIf="referencialDocumento" class="required">Documento Referencial</label>-->
+                            </span>
+                        </div>
+                        <div class="ui-grid-col-6">
+                            <span class="ui-float-label">
+                                <p-dropdown
+                                    optionLabel="nome"
+                                    required [filter]="true"
+                                    placeholder="Modelo de Documento"
+                                    name="modelo_documento">
+                                </p-dropdown>
+<!--                                   <label *ngIf="referencialDocumento" class="required">Documento Referencial</label>-->
+                            </span>
+                        </div>
+                    </div>
+                    <div class="ui-grid-row mt-2">
+                        <div class="ui-grid-col-6">
+                            <span class="ui-float-label">
+                                <p-dropdown
+                                    optionLabel="nome"
+                                    required [filter]="true"
+                                    placeholder="Título do item pai"
+                                    name="item_pai">
+                                </p-dropdown>
+<!--                                   <label *ngIf="referencialDocumento" class="required">Documento Referencial</label>-->
+                            </span>
+                        </div>
+                        <div class="ui-grid-col-6">
+                            <span class="ui-float-label">
+                                <p-dropdown
+                                    optionLabel="nome"
+                                    required [filter]="true"
+                                    placeholder="Documento Único"
+                                    name="documento_unico">
+                                </p-dropdown>
+<!--                                   <label *ngIf="referencialDocumento" class="required">Documento Referencial</label>-->
+                            </span>
+                        </div>
+                    </div>
+                    <h3>{{'DOCUMENTO.SCREEN.CADASTRAR.TITLE-ITEM' | translate}}</h3>
+                    <div class="ui-grid-row mt-2">
+                        <div class="ui-grid-col-12">
+                            <span class="ui-float-label">
+                                <input
+                                    pInputText type="text"
+                                    name="documento_item_"
+                                    maxlength="15"/>
+                                <label class="required">{{'DOCUMENTO.SCREEN.CADASTRAR.LABEL.ITEM-NAME' | translate}}</label>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="ui-grid-row mt-2">
+                        <div class="ui-grid-col-12">
+                            <p-editor [style]="{'height':'320px'}">
+                                <p-header>
+                                      <span class="ql-formats">
+                                        <select class="ql-size">
+                                          <option value="small">Petit</option>
+                                          <option selected></option>
+                                          <option value="large">Sous-titre</option>
+                                          <option value="huge">Titre</option>
+                                        </select>
+                                      </span>
+                                      <span class="ql-formats">
+                                        <button class="ql-bold" aria-label="Bold"></button>
+                                        <button class="ql-italic" aria-label="Italic"></button>
+                                        <button class="ql-underline" aria-label="Underline"></button>
+                                        <button class="ql-strike" aria-label="Strike"></button>
+                                      </span>
+                                      <span class="ql-formats">
+                                        <select title="Text Color" class="ql-color" defaultValue="rgb(0, 0, 0)">
+                                          <option value="rgb(0, 0, 0)" label="rgb(0, 0, 0)"></option>
+                                          ...
+                                          <option value="rgb(61, 20, 102)" label="rgb(61, 20, 102)"></option>
+                                        </select>
+                                        <span class="ql-format-separator"></span>
+                                        <select title="Background Color" class="ql-background" defaultValue="rgb(255, 255, 255)">
+                                          <option value="rgb(0, 0, 0)" label="rgb(0, 0, 0)"></option>
+                                          ...
+                                          <option value="rgb(61, 20, 102)" label="rgb(61, 20, 102)"></option>
+                                        </select>
+                                      </span>
+                                      <span class="ql-formats">
+                                        <button class="ql-list" value="List"></button>
+                                        <button class="ql-bullet" value="Bullet"></button>
+                                        <select title="Text Alignment" class="ql-align" >
+                                          <option selected>Gauche</option>
+                                          <option value="center" label="Center"></option>
+                                          <option value="right" label="Right"></option>
+                                          <option value="justify" label="Justify"></option>
+                                        </select>
+                                      </span>
+                                      <span class="ql-formats">
+                                        <button aria-label="Link" class="ql-link"></button>
+                                        <button aria-label="Image" class="ql-image"></button>
+                                      </span>
+                                </p-header>
+                            </p-editor>
+                        </div>
+                    </div>
+                    <h3>Adicione as imagens a sessão</h3>
+                    <div class="ui-grid-row mt-2">
+                        <div class="ui-grid-col-6">
+                           <span class="ui-float-label">
+                               <p-dropdown
+                                   optionLabel="nome"
+                                   required [filter]="true"
+                                   placeholder="Tipo da imagem"
+                                   name="imagem">
+                               </p-dropdown>
+<!--                                   <label *ngIf="referencialDocumento" class="required">Documento Referencial</label>-->
+                           </span>
+                        </div>
+                        <div class="ui-grid-col-6">
+                            <span class="ui-float-label">
+                                   <p-dropdown
+                                       optionLabel="nome"
+                                       required [filter]="true"
+                                       placeholder="Ilustração"
+                                       name="ilustração">
+                                   </p-dropdown>
+<!--                                   <label *ngIf="referencialDocumento" class="required">Documento Referencial</label>-->
+                            </span>
+                        </div>
+                </div>
+                    <div class="ui-grid-row mt-2">
+                        <div class="ui-grid-col-6">
+                           <span class="ui-float-label">
+                               <input
+                                   pInputText type="text"
+                                   name="produto_nome"
+                                   required
+                                   maxlength="256"
+                                   [(ngModel)]="product.nome"/>
+                           <label class="required">Número grupo de ilustrações</label>
+                           </span>
+                        </div>
+                        <div class="ui-grid-col-6">
+                            <span class="ui-float-label">
+                                <input
+                                    pInputText type="text"
+                                    name="produto_nome"
+                                    required
+                                    maxlength="256"
+                                    [(ngModel)]="product.nome"/>
+                            <label class="required">Notes ilustração</label>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="ui-grid-row mt-1">
+                        <div class="ui-grid-col-1,5" style="margin-top: 7px">
+                            <label>Classificação:</label>
+                        </div>
+                        <div class="ui-grid-col-5">
+                                <span class="ui-float-label">
+                                    <div class="ui-g-6">
+                                        <p-radioButton
+                                            name="radio_"
+                                            value="2"
+                                            label= "Não possui classificação" class="required">
+                                        </p-radioButton>
+                                    </div>
+                                </span>
+                        </div>
+                        <div class="ui-grid-col-3"style="margin-left: -22% !important;">
+                                <span class="ui-float-label">
+                                    <div class="ui-g-6">
+                                        <p-radioButton
+                                            name="radio_"
+                                            value="3"
+                                            label="I" class="required">
+                                        </p-radioButton>
+                                    </div>
+                                </span>
+                        </div>
+                        <div class="ui-grid-col-3"style="margin-left: -13% !important;">
+                                <span class="ui-float-label">
+                                    <div class="ui-g-6">
+                                        <p-radioButton
+                                            name="radio_"
+                                            value="4"
+                                            label="II" class="required">
+                                        </p-radioButton>
+                                    </div>
+                                </span>
+                        </div>
+                        <div class="ui-grid-col-3"style="margin-left: -13% !important;">
+                                <span class="ui-float-label">
+                                    <div class="ui-g-6">
+                                        <p-radioButton
+                                            name="radio_"
+                                            value="5"
+                                            label="Não permite exclusão" class="required">
+                                        </p-radioButton>
+                                    </div>
+                                </span>
+                        </div>
+                    </div>
+                    <div class="ui-grid-col-12 mt-3" style="text-align: end">
+                        <button
+                            pButton class="button-acao"
+                            type="button"
+                            label="Adicionar">
+                        </button>
+                    </div>
+                    <h3 style="margin-top: 60px">Lista de ilustrações adicionadas</h3>
+                    <h3>Grupo de ilustrações</h3>
+                    <div class="ui-grid-col-12">
+                        <p-table [value]="users">
+                            <ng-template pTemplate="header">
+                                <tr>
+                                    <th>Grupo de ilustrações</th>
+                                    <th>Nome da ilustração</th>
+                                    <th>Número de ilustração</th>
+                                    <th>Notas da ilustração</th>
+                                    <th>Classificação da ilustração</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </ng-template>
+                            <ng-template pTemplate="body" >
+                                <tr>
+                                    <td>Code</td>
+                                    <td>Code</td>
+                                    <td>Code</td>
+                                    <td>Code</td>
+                                    <td>Code</td>
+                                    <td style="text-align: center">
+                                        <i class="pi pi-pencil ml-10 icon-acao-editar"></i>
+                                        <i class="pi pi-times ml-10 icon-acao-deletar"></i>
+                                    </td>
+                                </tr>
+                            </ng-template>
+                        </p-table>
+                    </div>
+                    <div class="ui-grid-col-12" style="text-align: center; margin-top: 50px">
+                            <img src="https://vigiadepreco.com.br/blog/wp-content/uploads/2020/10/Dicas-para-montar-um-PC-Gamer-top-de-linha-3.jpg"
+                                 style="height: 150px; margin-top: 25px">
+                            <img src="https://vigiadepreco.com.br/blog/wp-content/uploads/2020/10/Dicas-para-montar-um-PC-Gamer-top-de-linha-3.jpg"
+                                style="height: 150px; margin-top: 25px; margin-left: 25px">
+                            <img src="https://vigiadepreco.com.br/blog/wp-content/uploads/2020/10/Dicas-para-montar-um-PC-Gamer-top-de-linha-3.jpg"
+                                 style="height: 150px; margin-top: 25px; margin-left: 25px">
+                    </div>
+                    <div class="ui-grid-col-12" style="margin-top: 50px">
+                        <p-table [value]="users">
+                            <ng-template pTemplate="header">
+                                <tr>
+                                    <th>Grupo de ilustrações</th>
+                                    <th>Nome da ilustração</th>
+                                    <th>Número de ilustração</th>
+                                    <th>Notas da ilustração</th>
+                                    <th>Classificação da ilustração</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </ng-template>
+                            <ng-template pTemplate="body" >
+                                <tr>
+                                    <td>Code</td>
+                                    <td>Code</td>
+                                    <td>Code</td>
+                                    <td>Code</td>
+                                    <td>Code</td>
+                                    <td style="text-align: center">
+                                        <i class="pi pi-pencil ml-10 icon-acao-editar"></i>
+                                        <i class="pi pi-times ml-10 icon-acao-deletar"></i>
+                                    </td>
+                                </tr>
+                            </ng-template>
+                        </p-table>
+                    </div>
+                    <div class="ui-grid-col-12" style="text-align: center; margin-top: 50px">
+                        <img src="https://vigiadepreco.com.br/blog/wp-content/uploads/2020/10/Dicas-para-montar-um-PC-Gamer-top-de-linha-3.jpg"
+                             style="height: 150px; margin-top: 25px">
+                        <img src="https://vigiadepreco.com.br/blog/wp-content/uploads/2020/10/Dicas-para-montar-um-PC-Gamer-top-de-linha-3.jpg"
+                             style="height: 150px; margin-top: 25px; margin-left: 25px">
+                        <img src="https://vigiadepreco.com.br/blog/wp-content/uploads/2020/10/Dicas-para-montar-um-PC-Gamer-top-de-linha-3.jpg"
+                             style="height: 150px; margin-top: 25px; margin-left: 25px">
+                    </div>
+
+
+
+                        <div class="ui-grid-col-12 mt-3" style="text-align: end">
+                            <button
+                                pButton class="button-acao"
+                                type="button" icon="pi pi-arrow-left"
+                                label="{{'COMUM.BUTTON.COME_BACK' | translate}}" [routerLink]="['/item']">
+                            </button>
+                        </div>
+                    </div>
+            </p-tabView>
+        </p-card>
+    </div>
+</div>

@@ -1,0 +1,164 @@
+<div class="container">
+    <div class="ui-md-10 ui-md-offset-1 ui-md-nopad">
+        <p-card>
+            <h3>Cadastrar Modelo Documento</h3>
+            <p-messages [(value)]="msgs"></p-messages>
+            <p-tabView>
+                <form #form="ngForm" (ngSubmit)="salvar(form)">
+                    <h3>{{'DOCUMENTO.SCREEN.CADASTRAR.TITLE-REFERENCIAL' | translate}}</h3>
+                    <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+                        <div class="ui-grid-row mt-2">
+                            <div class="ui-grid-col-6">
+                               <span class="ui-float-label">
+                                   <p-dropdown
+                                         [options]="listaReferecial"
+                                         optionLabel="nome"
+                                         [(ngModel)]="referencialDocumento"
+                                         required [filter]="true"
+                                         placeholder="Documento Referencial"
+                                         name="Documento Referencial">
+                                   </p-dropdown>
+                                   <label *ngIf="referencialDocumento" class="required">Documento Referencial</label>
+                                </span>
+                            </div>
+                            <div class="ui-grid-col-6">
+                                <span class="ui-float-label">
+                                    <input
+                                        pInputText type="text"
+                                        name="documento_nome"
+                                        [(ngModel)]="documento.nomeModelo"
+                                        required
+                                        maxlength="100"/>
+                                        <label class="required">Modelo do Documento</label>
+                                </span>
+                            </div>
+                        </div>
+                        <h3>{{'DOCUMENTO.SCREEN.CADASTRAR.TITLE-ITEM' | translate}}</h3>
+                        <div *ngFor="let item of itens; let i = index">
+                        <div class="ui-grid-row mt-2">
+                            <div class="ui-grid-col-12">
+                                <span class="ui-float-label">
+                                    <input
+                                        pInputText type="text"
+                                        [(ngModel)]="item.nome"
+                                        name="documento_item_{{i}}"
+                                        maxlength="15"/>
+                                        <label class="required">{{'DOCUMENTO.SCREEN.CADASTRAR.LABEL.ITEM-NAME' | translate}} {{i + 1}}</label>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="ui-grid-row mt-1">
+                            <div class="ui-grid-col-6">
+                                <span class="ui-float-label">
+                                    <div class="ui-g-6">
+                                        <p-checkbox
+                                            name="Imagem_{{i}}"
+                                            [binary]="true"
+                                            label="{{'DOCUMENTO.SCREEN.CADASTRAR.LABEL.ITEM-VINCULO-IMAGEM' | translate}}"
+                                            [(ngModel)]="item.permiteImagem">
+                                        </p-checkbox>
+                                    </div>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="ui-grid-row mt-1">
+                            <div class="ui-grid-col-12">
+                                <span class="ui-float-label">
+                                    <div class="ui-g-6">
+                                        <p-checkbox
+                                            name="groupname_{{i}}"
+                                            label="{{'DOCUMENTO.SCREEN.CADASTRAR.LABEL.ITEM-NOMENCLATURA' | translate}}">
+                                        </p-checkbox>
+                                    </div>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="ui-grid-row mt-1">
+                            <div class="ui-grid-col-5">
+                                <span class="ui-float-label">
+                                    <div class="ui-g-6">
+                                        <p-radioButton
+                                            name="radio_{{i}}"
+                                            value="2"
+                                            [(ngModel)]="item.nomenclatura"
+                                            label= "{{'DOCUMENTO.SCREEN.CADASTRAR.LABEL.ITEM-ALGARISMOS' | translate}}" class="required">
+                                        </p-radioButton>
+                                    </div>
+                                </span>
+                            </div>
+                            <div class="ui-grid-col-3"style="margin-left: -22% !important;">
+                                <span class="ui-float-label">
+                                    <div class="ui-g-6">
+                                        <p-radioButton
+                                            name="radio_{{i}}"
+                                            value="3"
+                                            [(ngModel)]="item.nomenclatura"
+                                            label="{{'DOCUMENTO.SCREEN.CADASTRAR.LABEL.ITEM-CARDINAIS' | translate}}" class="required">
+                                        </p-radioButton>
+                                    </div>
+                                </span>
+                            </div>
+                            <div class="ui-grid-col-3"style="margin-left: -13% !important;">
+                                <span class="ui-float-label">
+                                    <div class="ui-g-6">
+                                        <p-radioButton
+                                            name="radio_{{i}}"
+                                            value="4"
+                                            [(ngModel)]="item.nomenclatura"
+                                            label="{{'DOCUMENTO.SCREEN.CADASTRAR.LABEL.ITEM-LETRAS' | translate}}" class="required">
+                                        </p-radioButton>
+                                    </div>
+                                </span>
+                            </div>
+                            <div class="ui-grid-col-3"style="margin-left: -13% !important;">
+                                <span class="ui-float-label">
+                                    <div class="ui-g-6">
+                                        <p-radioButton
+                                            name="radio_{{i}}"
+                                            value="5"
+                                            [(ngModel)]="item.nomenclatura"
+                                            label="{{'DOCUMENTO.SCREEN.CADASTRAR.LABEL.ITEM-MARCADOR' | translate}}" class="required">
+                                        </p-radioButton>
+                                    </div>
+                                </span>
+                            </div>
+                            <div class="ui-grid-col-3"style="margin-left: -13% !important;">
+                                <span class="ui-float-label">
+                                    <div class="ui-g-6">
+                                        <p-radioButton
+                                            name="radio_{{i}}"
+                                            value="1"
+                                            [(ngModel)]="item.nomenclatura"
+                                            label="{{'DOCUMENTO.SCREEN.CADASTRAR.LABEL.ITEM-NENHUM' | translate}}" class="required">
+                                        </p-radioButton>
+                                    </div>
+                                </span>
+                            </div>
+                        </div>
+                        </div>
+                        <h3></h3>
+                        <div class="ui-grid-col-12 mt-3" style="text-align: end">
+
+                            <button
+                                pButton class="button-acao"
+                                type="button" icon="pi pi-plus"
+                                label="{{'COMUM.BUTTON.ADD' | translate}}"
+                                (click)="adicionarItem()">
+                            </button>
+                            <button
+                                pButton class="button-acao"
+                                type="submit" icon="pi pi-check"
+                                label="{{'COMUM.BUTTON.SAVE' | translate}}">
+                            </button>
+                            <button
+                                pButton class="button-acao"
+                                type="button" icon="pi pi-arrow-left"
+                                label="{{'COMUM.BUTTON.COME_BACK' | translate}}" [routerLink]="['/modelo-documento']">
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </p-tabView>
+        </p-card>
+    </div>
+</div>

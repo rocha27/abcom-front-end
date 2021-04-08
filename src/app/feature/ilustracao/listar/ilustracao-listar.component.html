@@ -1,0 +1,99 @@
+<div class="container">
+    <div>
+        <p-card>
+            <h3>Pesquisar Ilustração</h3>
+
+            <div class="ui-g">
+                <div class="ui-g-12 ui-lg-8 ui-lg-offset-2 ui-g-nopad">
+                    <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+                        <div class="ui-grid-row mt-2">
+                            <div class="ui-grid-col-6">
+                                <span class="ui-float-label">
+                                     <p-dropdown
+                                         required
+                                         name="entidade_cargo">
+                                     </p-dropdown>
+                                    <label>Classificação</label>
+                                </span>
+                            </div>
+                            <div class="ui-grid-col-6">
+                                <span class="ui-float-label">
+                                     <p-dropdown
+                                         required
+                                         name="entidade_cargo">
+                                     </p-dropdown>
+                                    <label>Produto</label>
+                                </span>
+                            </div>
+                            <div class="ui-grid-col-6">
+                                <span class="ui-float-label">
+                                     <p-dropdown
+                                         required
+                                         name="entidade_cargo">
+                                     </p-dropdown>
+                                    <label>Grupo de Produto</label>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-12 mt-3" style="text-align: end">
+                            <button pButton class="button-acao" type="submit" icon="pi pi-search" label="Pesquisar"
+                                    (click)="consultar()"></button>
+                            <button pButton class="button-acao" type="button" icon="pi pi-plus"
+                                    label="{{'COMUM.BUTTON.NEW' | translate}}"
+                                    [routerLink]="['/ilustracao/incluir']"></button>
+                        </div>
+                    </div>
+                    <div class="ui-grid-row" *ngIf="loading && registros.length == 0">
+                        <div class="ui-grid-col-12 mt-3" style="text-align: end">
+                            <app-loading></app-loading>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ui-grid-row mt-2" *ngIf="registros.length > 0">
+                <p-table
+                    [value]="registros"
+                    [paginator]="true"
+                    [rows]="paginacao.registrosPorPagina"
+                    [totalRecords]="paginacao.totalItens"
+                    [lazy]="true"
+                    [lazyLoadOnInit]="false"
+                    [loading]="loading"
+                    [resizableColumns]="true"
+                    (onLazyLoad)="loadLazy($event)">
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th style="text-align: start">{{'ENTIDADE.SCREEN.LISTAR.TABLE.LABEL.SIGLA' | translate }}</th>
+                            <th style="text-align: start">{{'ENTIDADE.SCREEN.LISTAR.TABLE.LABEL.NAME' | translate }}</th>
+                            <th style="text-align: start">{{'ENTIDADE.SCREEN.LISTAR.TABLE.LABEL.TITULAR' | translate }}</th>
+                            <th style="width: 100px; text-align: center">{{'ENTIDADE.SCREEN.LISTAR.TABLE.LABEL.ACTION' | translate }}</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-item let-index="rowIndex">
+                        <tr>
+                            <td>{{item.sigla}}</td>
+                            <td>{{item.nome}}</td>
+                            <td>{{item.titular}}</td>
+                            <td style="text-align: center">
+                                <i class="pi pi-search icon-acao icon-acao-visualizar"
+                                   [routerLink]="['/entidade/visualizar', item.id]"></i>
+                                <i class="pi pi-pencil ml-10 icon-acao-editar"
+                                   [routerLink]="['/entidade/alterar', item.id]"></i>
+                            </td>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="summary">
+                        <div style="text-align: start">
+                            {{'COMUM.LABEL.TOTAL_ITEMS' | translate}}: {{paginacao?.totalItens}}
+                        </div>
+                    </ng-template>
+                </p-table>
+            </div>
+
+        </p-card>
+    </div>
+</div>

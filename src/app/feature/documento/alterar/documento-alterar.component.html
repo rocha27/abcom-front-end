@@ -1,0 +1,121 @@
+<div class="container">
+    <div class="ui-md-10 ui-md-offset-1 ui-md-nopad">
+        <p-card>
+            <h3>{{'DOCUMENTO.SCREEN.CADASTRAR.TITLE' | translate}}</h3>
+            <p-messages [(value)]="msgs"></p-messages>
+            <p-tabView>
+                <form #form="ngForm" (ngSubmit)="salvar()">
+                    <h3>Qual modelo de documento você desenvolve?</h3>
+                    <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+                        <div class="ui-grid-row mt-2">
+                            <div class="ui-grid-col-6">
+                               <span class="ui-float-label">
+                                   <p-dropdown
+                                       [options]="listaReferecial"
+                                       optionLabel="nome"
+                                       [(ngModel)]="referencialDocumento"
+                                       required [filter]="true"
+                                       placeholder = "Referencial"
+                                       name="Referencial">
+                                     </p-dropdown>
+                                   <label *ngIf="referencialDocumento" class="required">Referencial</label>
+                                </span>
+                            </div>
+                            <div class="ui-grid-col-6">
+                                <span class="ui-float-label">
+                                   <p-dropdown
+                                       [options]="listaModeloDocumento"
+                                       optionLabel="nome"
+                                       [(ngModel)]="documento"
+                                       required [filter]="true"
+                                       placeholder="Modelo Documento"
+                                       name="Modelo Documento">
+                                     </p-dropdown>
+                                   <label *ngIf="documento" class="required">Modelo Documento</label>
+                                </span>
+                            </div>
+                        </div>
+                        <h3 style="padding-top: 10px">Qual será a identificação única desse documento?</h3>
+                        <div class="ui-grid-row mt-2">
+                            <div class="ui-grid-col-6">
+                                   <span class="ui-float-label">
+                                       <p-dropdown
+                                           [options]="listaProduto"
+                                           optionLabel="nome"
+                                           [(ngModel)]="produto"
+                                           required [filter]="true"
+                                           placeholder="Produto"
+                                           name="Produto">
+                                         </p-dropdown>
+                                       <label *ngIf="referencialDocumento" class="required">Produto</label>
+                                    </span>
+                            </div>
+                            <div class="ui-grid-col-6">
+                                    <span class="ui-float-label">
+                                       <p-dropdown
+                                           [options]="listaReferecial"
+                                           optionLabel="nome"
+                                           [(ngModel)]="referencialDocumento"
+                                           required [filter]="true"
+                                           placeholder="Idioma"
+                                           name="Idioma">
+                                         </p-dropdown>
+                                       <label *ngIf="referencialDocumento" class="required">Idioma</label>
+                                    </span>
+                            </div>
+                            <div class="ui-grid-col-6">
+                                    <span class="ui-float-label">
+                                       <input
+                                           pInputText type="text"
+                                           name="documento_nome"
+                                           required
+                                           maxlength="100"/>
+                                       <label class="required">Edição do documento</label>
+                                    </span>
+                            </div>
+                        </div>
+                        <h3 style="padding-top: 10px">Qual situação do documento no momento?</h3>
+                        <div class="ui-grid-row mt-2">
+                            <div class="ui-grid-col-6">
+                                   <span class="ui-float-label">
+                                       <p-dropdown
+                                           [options]="listaReferecial"
+                                           optionLabel="nome"
+                                           [(ngModel)]="referencialDocumento"
+                                           required [filter]="true"
+                                           placeholder="Situação"
+                                           name="Situação">
+                                         </p-dropdown>
+                                       <label *ngIf="referencialDocumento" class="required">Situação</label>
+                                    </span>
+                            </div>
+                            <div class="ui-grid-col-6">
+                                    <span class="ui-float-label">
+                                       <input
+                                           pInputText type="text"
+                                           name="motivo_comentario"
+                                           required
+                                           maxlength="100"/>
+                                       <label class="required">Motivo ou comentário</label>
+                                    </span>
+                            </div>
+                        </div>
+                        <h3></h3>
+                        <div class="ui-grid-col-12 mt-3" style="text-align: end">
+                            <button
+                                pButton class="button-acao"
+                                type="submit" icon="pi pi-check"
+                                label="{{'COMUM.BUTTON.SAVE' | translate}}">
+                            </button>
+                            <button
+                                pButton class="button-acao"
+                                type="button" icon="pi pi-arrow-left"
+                                label="{{'COMUM.BUTTON.COME_BACK' | translate}}" [routerLink]="['/documento']">
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </p-tabView>
+        </p-card>
+    </div>
+</div>

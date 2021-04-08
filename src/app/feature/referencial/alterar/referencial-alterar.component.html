@@ -1,0 +1,32 @@
+<div class="container">
+        <p-card>
+            <h3>{{'REFERENCIAL.SCREEN.ALTERAR.TITLE' | translate}}</h3>
+                    <form>
+                        <div class="ui-g-12 ui-lg-8 ui-lg-offset-2 ui-g-nopad">
+                            <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+                                <div class="ui-grid-row mt-2">
+                                    <div class="ui-grid-col-12">
+                                        <span class="ui-float-label">
+                                            <input
+                                                pInputText type="text"
+                                                name="referencial_nome"
+                                                required
+                                                maxlength="256"
+                                                [(ngModel)]="reference.nome"/>
+                                            <label class="required">{{'REFERENCIAL.SCREEN.CADASTRAR.LABEL.NAME' | translate}}</label>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ui-grid-row">
+                            <div class="ui-grid-col-10 mt-3" style="text-align: end">
+                                <button pButton class="button-acao" type="submit" icon="pi pi-check"
+                                        label="{{'COMUM.BUTTON.SAVE' | translate}}" (click)="alterar(reference)"></button>
+                                <button pButton class="button-acao" type="button" icon="pi pi-arrow-left"
+                                        label="{{'COMUM.BUTTON.COME_BACK' | translate}}" [routerLink]="['/referencial']"></button>
+                            </div>
+                        </div>
+                    </form>
+        </p-card>
+    </div>

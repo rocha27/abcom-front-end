@@ -1,0 +1,58 @@
+<div class="container">
+    <div>
+        <p-card>
+            <h3>Pesquisar Referencial</h3>
+            <form #form="ngForm">
+                <div class="ui-g">
+                    <div class="ui-g-12 ui-lg-8 ui-lg-offset-2 ui-g-nopad">
+                        <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+                            <div class="ui-grid-row mt-2">
+                                <div class="ui-grid-col-12">
+                                    <span class="ui-float-label">
+                                         <input
+                                             pInputText type="text"
+                                             [(ngModel)]="filtro.nome"
+                                             name="documento_nome"
+                                             required
+                                             maxlength="100"/>
+                                        <label>{{'REFERENCIAL.SCREEN.LISTAR.LABEL.NAME' | translate}}</label>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ui-grid-row">
+                            <div class="ui-grid-col-12 mt-3" style="text-align: end">
+                                <button pButton class="button-acao" type="submit" icon="pi pi-search" label="{{'COMUM.BUTTON.SEARCH' | translate}}" (click)="buscaReferencial()"></button>
+                                <button pButton class="button-acao" type="button" icon="pi pi-plus" label="{{'COMUM.BUTTON.NEW' | translate}}" [routerLink]="['/referencial/incluir']"></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div class="ui-grid-row mt-2">
+                <p-table *ngIf="reference?.length > 0" [columns]="name" [value]="reference" [paginator]="true" [rows]="1">
+                    <ng-template pTemplate="header" let-columns>
+                        <tr>
+                            <th *ngFor="let col of columns" align="left">
+                                {{col.header}}
+                            </th>
+                            <th *ngFor="let col of action" style="width: 30%">
+                                {{col.header}}
+                            </th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-rowData let-columns="columns">
+                        <tr *ngFor="let reference of reference">
+                            <td>{{reference.nome}}</td>
+                            <td style="text-align: center">
+                                <i class="pi pi-search icon-acao icon-acao-visualizar" [routerLink]="['visualizar/', reference.id]"></i>
+                                <i class="pi pi-pencil ml-10 icon-acao-editar" [routerLink]="['alterar/', reference.id]"></i>
+                                <i class="pi pi-times ml-10 icon-acao-deletar" (click)="excluirReferencial(reference.id)"></i>
+                            </td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </div>
+        </p-card>
+    </div>
+</div>

@@ -1,0 +1,151 @@
+<div class="container">
+    <div class="ui-md-10 ui-md-offset-1 ui-md-nopad">
+        <p-card>
+            <h3>Visualizar Modelo Documento</h3>
+            <p-tabView>
+                <form>
+                    <h3>Selecione o referencial e preencha o nome do documento</h3>
+                    <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+                        <div class="ui-grid-row mt-2">
+                            <div class="ui-grid-col-6">
+                                <label style="color: #898989">Documento Referencial</label>
+                                <span class="ui-float-label">
+                                   <p-dropdown
+                                       optionLabel="nome"
+                                       required [filter]="true"
+                                       [options]="listaReferecial"
+                                       name="Documento Referencial"
+                                       [(ngModel)]="referencial">
+                                     </p-dropdown>
+                                </span>
+                            </div>
+                            <div class="ui-grid-col-6">
+                                <label class="required" style="color: #898989">Tipo do Documento</label>
+                                    <span class="ui-float-label">
+                                        <input
+                                            pInputText type="text"
+                                            name="documento_nome"
+                                            required
+                                            maxlength="100"
+                                            [(ngModel)]="documento.nomeModelo"/>
+                                    </span>
+                            </div>
+                        </div>
+                        <h3>Configure os campos que podem ser cadastrados em cada item</h3>
+                        <div *ngFor="let item of itens; let i = index">
+                            <div class="ui-grid-row mt-2">
+                                <div class="ui-grid-col-12">
+                                    <span class="ui-float-label">
+                                        <input
+                                            pInputText type="text"
+                                            name="documento_item_{{i}}"
+                                            maxlength="15"
+                                            [(ngModel)]="item.nome"/>
+                                            <label>Nome do item</label>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="ui-grid-row mt-1">
+                                <div class="ui-grid-col-6">
+                                    <span class="ui-float-label">
+                                        <div class="ui-g-6">
+                                            <p-checkbox
+                                                name="Imagem_{{i}}"
+                                                [binary]="true"
+                                                [(ngModel)]="item.permiteImagem"
+                                                label="Permite vincular imagem">
+                                            </p-checkbox>
+                                        </div>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="ui-grid-row mt-1">
+                                <div class="ui-grid-col-12">
+                                    <span class="ui-float-label">
+                                        <div class="ui-g-6">
+                                            <p-checkbox
+                                                name="groupname_{{i}}"
+                                                label="Apresentar nomenclatura do tipo do item">
+                                            </p-checkbox>
+                                        </div>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="ui-grid-row mt-1">
+                                <div class="ui-grid-col-5">
+                                    <span class="ui-float-label">
+                                        <div class="ui-g-6">
+                                            <p-radioButton
+                                                name="radio_{{i}}"
+                                                value="2"
+                                                [(ngModel)]="item.nomenclatura"
+                                                label="Algorismos romanos">
+                                            </p-radioButton>
+                                        </div>
+                                    </span>
+                                </div>
+                                <div class="ui-grid-col-3" style="margin-left: -22% !important;">
+                                    <span class="ui-float-label">
+                                        <div class="ui-g-6">
+                                            <p-radioButton
+                                                name="radio_{{i}}"
+                                                value="3"
+                                                [(ngModel)]="item.nomenclatura"
+                                                label="Cardinais">
+                                            </p-radioButton>
+                                        </div>
+                                    </span>
+                                </div>
+                                <div class="ui-grid-col-3" style="margin-left: -13% !important;">
+                                    <span class="ui-float-label">
+                                        <div class="ui-g-6">
+                                            <p-radioButton
+                                                name="radio_{{i}}"
+                                                value="4"
+                                                [(ngModel)]="item.nomenclatura"
+                                                label="Letras">
+                                            </p-radioButton>
+                                        </div>
+                                    </span>
+                                </div>
+                                <div class="ui-grid-col-3" style="margin-left: -13% !important;">
+                                    <span class="ui-float-label">
+                                        <div class="ui-g-6">
+                                            <p-radioButton
+                                                name="radio_{{i}}"
+                                                value="5"
+                                                [(ngModel)]="item.nomenclatura"
+                                                label="Destacar">
+                                            </p-radioButton>
+                                        </div>
+                                    </span>
+                                </div>
+                                <div class="ui-grid-col-3" style="margin-left: -13% !important;">
+                                    <span class="ui-float-label">
+                                        <div class="ui-g-6">
+                                            <p-radioButton
+                                                name="radio_{{i}}"
+                                                value="1"
+                                                [(ngModel)]="item.nomenclatura"
+                                                label="Nenhum">
+                                            </p-radioButton>
+                                        </div>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <h3></h3>
+                        <div class="ui-grid-col-12 mt-3" style="text-align: end">
+                            <button
+                                pButton class="button-acao"
+                                type="button" icon="pi pi-arrow-left"
+                                label="{{'COMUM.BUTTON.COME_BACK' | translate}}" [routerLink]="['/documento']">
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </p-tabView>
+        </p-card>
+    </div>
+</div>
+
